@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Mobile.QuizDetailsPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20,15" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label Text="Create Quiz" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            <StackLayout Margin="0,30,0,0">
+                <StackLayout>
+                    <Label Text="Title Quiz" FontSize="Medium" TextColor="White"/>
+                    <Entry Text="{Binding QuizList.Title}" TextColor="White"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Subject Quiz" FontSize="Medium" TextColor="White"/>
+                    <Entry Text="{Binding QuizList.Subject}" TextColor="White"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Number of Student" FontSize="Small" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding NumberOfStudent}" HorizontalOptions="End" WidthRequest="130" TextColor="White" PlaceholderColor="White" IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Net Of Student" FontSize="Small" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding NetOfNumberOfStudent}" HorizontalOptions="End" WidthRequest="130" TextColor="White" PlaceholderColor="White" IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Quiz Duration" FontSize="Small" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding QuizDuration}" HorizontalOptions="End" WidthRequest="130" TextColor="White" PlaceholderColor="White" IsReadOnly="True"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>   
+    </ContentPage.Content>
+</ContentPage>

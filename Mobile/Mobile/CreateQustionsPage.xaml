@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.CreateQustionsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,40" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <StackLayout x:Name="MarkerLayout" Orientation="Horizontal">
+                <Switch x:Name="SwitchMarker" IsToggled="{Binding IsMarker}" Toggled="ChangeMarker" ThumbColor="#0b8bfb" OnColor="White"/>
+                <Label Text="All question have marker" FontSize="Small" TextColor="White" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout>
+                <Editor x:Name="QustionEditor" HeightRequest="140" Placeholder="Question text" PlaceholderColor="White" TextColor="White"></Editor>
+            </StackLayout>
+            <ScrollView VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                <StackLayout x:Name="OptionsLayout">
+
+                </StackLayout>
+            </ScrollView>
+            <Entry x:Name="addEntryOption" Placeholder="Write here to more option" TextColor="White" PlaceholderColor="White" Focused="AddLayout" WidthRequest="230" HorizontalOptions="Start" />
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand">
+                <Button Text="Finish" FontAttributes="Bold" FontSize="Subtitle" TextColor="White" Clicked="CreateQustion"
+                    CornerRadius="{OnPlatform Android=30, iOS=20}" WidthRequest="100" HorizontalOptions="CenterAndExpand">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                            <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button Text="Next Qustion" ImageSource="arrow.png" FontAttributes="Bold" FontSize="Subtitle" TextColor="White" Clicked="NextQustion"
+                    CornerRadius="{OnPlatform Android=30, iOS=20}" WidthRequest="250" ContentLayout="Right, 20" HorizontalOptions="CenterAndExpand">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                            <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Mobile.StudentProfilePage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label Text="My Profile" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            <Image Source="my_profile.png" WidthRequest="100" HeightRequest="100" Margin="0,20,0,0" />
+            <StackLayout Spacing="20" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="user.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding User.FullName}" Placeholder="Name" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="mail.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding User.Email}" Placeholder="Email" Keyboard="Email" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand" IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="identity.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                    <Entry Text="{Binding User.UniversityNumber}" Placeholder="University ID" Keyboard="Numeric" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Image Source="change_password.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Entry x:Name="PasswordEntry" Text="{Binding User.Password}" Placeholder="Change Password" IsPassword="True" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                        <ImageButton Source="showPassword.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" Clicked="HideOrShowPassword"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </StackLayout>
+            <Button Text="Save" ImageSource="save.png" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="150" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="SaveProfile">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

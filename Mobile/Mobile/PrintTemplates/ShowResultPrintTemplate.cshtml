@@ -1,0 +1,48 @@
+﻿@using System.Collections.Generic;
+@using Xamarin.Forms;
+@model List<ModelsShared.Models.StudentAnswersQustions>
+
+<html lang="en">
+<head>
+	<!-- iOS - needs to reside in the "Resources" directory and have build action of "BundleResource" -->
+	<!-- Droid - needs to reside in "Assets" directory and have build action of "AndroidAsset" -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="@(DependencyService.Get<Mobile.Interfaces.IPrintService>().GetStyle())">
+	<style>
+		div {
+			-webkit-user-select: none; /* Safari 3.1+ */
+			-moz-user-select: none; /* Firefox 2+ */
+			-ms-user-select: none; /* IE 10+ */
+			user-select: none; /* Standard syntax */
+			cursor: default;
+		}
+		.card {
+			box-shadow: 0 0 20px 0 rgba(100, 100, 100, 0.56);
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid" style="padding-top: 10px;padding-bottom: 10px;">
+		@foreach (var item in Model)
+		{
+			<div class="card" style="margin-top: 10px;margin-bottom: 10px;">
+				<div class="card-body">
+					<h3 class="card-title">@item.User.FullName</h3>
+					<div class="row">
+						<div class="col">
+							<h4 class="card-text">@item.User.UniversityNumber</h4>
+						</div>
+						<div class="col">
+							<h4 class="card-text text-right font-weight-bold" style="color:green;">@item.Result</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+            </LinearGradientBrush>
+        </StackLayout.Background>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20,110,20,20">
+                <Image Source="science.png" Aspect="AspectFill" WidthRequest="100" HeightRequest="100" HorizontalOptions="StartAndExpand" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Proceed with your" TextColor="#BFBFBF" FontSize="Title"/>
+                            <Span Text="&#x0a;Login" TextColor="White" FontAttributes="Bold" FontSize="Title"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <StackLayout Spacing="40" Margin="0,20,0,0">
+                    <Entry Text="{Binding Email}" Placeholder="Enter your e-mail" Keyboard="Email" PlaceholderColor="White" TextColor="White"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Entry x:Name="PasswordEntry" Text="{Binding Password}" Placeholder="Enter your password" IsPassword="True" PlaceholderColor="{OnPlatform Android=white, iOS=black}" HorizontalOptions="FillAndExpand" TextColor="White"/>
+                        <ImageButton Source="showPassword.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" Clicked="HideOrShowPasswrod"/>
+                    </StackLayout>
+                    <Button Text="Login" Clicked="Login" ImageSource="arrow.png" FontAttributes="Bold" FontSize="Subtitle" TextColor="White"
+                            CornerRadius="{OnPlatform Android=30, iOS=20}" WidthRequest="130" ContentLayout="Right, 20" HorizontalOptions="End">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="0,20">
+                    <BoxView Color="White" HeightRequest=".5" WidthRequest="130" HorizontalOptions="Start" VerticalOptions="Center"/>
+                    <Label Text="OR" WidthRequest="70" FontAttributes="Bold" FontSize="Medium" TextColor="White"  VerticalOptions="Fill" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                    <BoxView Color="White" HeightRequest=".5" WidthRequest="130" HorizontalOptions="End" VerticalOptions="Center"/>
+                </StackLayout>
+                <Button Text="Sign up" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" HorizontalOptions="FillAndExpand" Clicked="GoToRegisterPage">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                            <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+            <StackLayout BackgroundColor="#66000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}">
+                <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                        <Label Text="Loading..."/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

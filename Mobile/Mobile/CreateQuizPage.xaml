@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.CreateQuizPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="20,15" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label Text="Create Quiz" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            <StackLayout Margin="0,30,0,0">
+                <StackLayout>
+                    <Label Text="Title Quiz" FontSize="Medium" TextColor="White"/>
+                    <Entry Text="{Binding TitleQuiz}" TextColor="White"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Subject Quiz" FontSize="Medium" TextColor="White"/>
+                    <Entry Text="{Binding SubjectQuiz}" TextColor="White"/>
+                </StackLayout>
+                <StackLayout x:Name="MarkerLayout" Orientation="Horizontal">
+                    <Switch IsToggled="{Binding IsMarker}" ThumbColor="#0b8bfb" OnColor="White"/>
+                    <Label Text="All question have marker (As Default)" FontSize="Small" TextColor="White" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Number of Student" FontSize="Small" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"/>
+                    <Entry Text="{Binding NumberOfStudent}" HorizontalOptions="FillAndExpand" TextColor="White" PlaceholderColor="White" IsReadOnly="True"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Label Text="Quiz Time" FontSize="Medium" TextColor="White"/>
+                <StackLayout Spacing="30">
+                    <Frame BackgroundColor="Transparent" Padding="0" Margin="0" CornerRadius="10">
+                        <StackLayout Orientation="Horizontal" Spacing="2">
+                            <Button x:Name="IntervalButton" Text="Interval" Clicked="SelectInterval" TextColor="White" CornerRadius="0" HeightRequest="40" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="FromToButton" Text="From-To" Clicked="SelectFromTo" TextColor="#A2A2A2" CornerRadius="0" HeightRequest="40" VerticalOptions="EndAndExpand"  HorizontalOptions="FillAndExpand">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                            <Button x:Name="UnlimitedButton" Text="Unlimited" Clicked="SelectUnlimited" TextColor="#A2A2A2" CornerRadius="0" HeightRequest="40" VerticalOptions="EndAndExpand"  HorizontalOptions="FillAndExpand">
+                                <Button.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Button.Background>
+                            </Button>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout x:Name="QuizTimeLayout" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Frame Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand" BorderColor="Transparent" WidthRequest="90">
+                            <Picker x:Name="intervalPicker" Title="Minutes" TitleColor="White" ItemDisplayBinding="{Binding .}" HorizontalOptions="FillAndExpand" TextColor="White">
+                                <Picker.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Picker.Background>
+                            </Picker>
+                        </Frame>
+                    </StackLayout>
+                    <Button Text="Create" ImageSource="arrow.png" FontAttributes="Bold" FontSize="Subtitle" TextColor="White" Clicked="CreateQuiz"
+                    CornerRadius="{OnPlatform Android=30, iOS=20}" WidthRequest="160" ContentLayout="Right, 20" HorizontalOptions="CenterAndExpand">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

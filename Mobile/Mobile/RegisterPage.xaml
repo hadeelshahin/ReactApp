@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.RegisterPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Spacing="20" Padding="30">
+                    <Image Source="science_larg.png" Aspect="AspectFit" WidthRequest="120" HeightRequest="120" HorizontalOptions="CenterAndExpand" />
+                    <StackLayout Spacing="20">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="user.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                            <Entry Text="{Binding FullName}" Placeholder="Name" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="mail.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                            <Entry Text="{Binding Email}" Placeholder="Email" Keyboard="Email" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="password.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Entry x:Name="PasswordEntry" Text="{Binding Password}" Placeholder="Password" IsPassword="True" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                                <ImageButton Source="showPassword.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" Clicked="HideOrShowPasswrod"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Image Source="password.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" HorizontalOptions="Center"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Entry x:Name="PasswordConfirmationEntry" Text="{Binding PasswordConfirmation}" Placeholder="Password Confirmation" IsPassword="True" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                                <ImageButton Source="showPassword.png" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" Clicked="HideOrShowPasswordConfirmation"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="15">
+                        <Label Text="Gender" TextColor="White" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal" Padding="30,0">
+                            <RadioButton Content="Male" CheckedChanged="GenderChanged"  GroupName="Gender" Value="Male" IsChecked="True" HorizontalOptions="StartAndExpand" TextColor="White"/>
+                            <RadioButton Content="Female" CheckedChanged="GenderChanged" GroupName="Gender" Value="Female" HorizontalOptions="EndAndExpand" TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="15">
+                        <Label Text="Account Type" TextColor="White" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal" Padding="30,0">
+                            <RadioButton Content="Student" CheckedChanged="AccountTypeChanged" GroupName="AccountType" Value="Student" IsChecked="True" HorizontalOptions="StartAndExpand" TextColor="White"/>
+                            <RadioButton Content="Doctor"  CheckedChanged="AccountTypeChanged" GroupName="AccountType" Value="Teacher" HorizontalOptions="EndAndExpand" TextColor="White"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Button Text="Sign up" Clicked="SignUp" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="EndAndExpand">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="#66000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}">
+                    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                            <Label Text="Loading..."/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

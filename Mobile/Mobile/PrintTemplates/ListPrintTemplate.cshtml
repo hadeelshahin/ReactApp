@@ -1,0 +1,58 @@
+﻿@using System.Collections.Generic;
+@using Xamarin.Forms;
+@model List<ModelsShared.Models.Users>
+
+<html lang="en">
+<head>
+	<!-- iOS - needs to reside in the "Resources" directory and have build action of "BundleResource" -->
+	<!-- Droid - needs to reside in "Assets" directory and have build action of "AndroidAsset" -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="@(DependencyService.Get<Mobile.Interfaces.IPrintService>().GetStyle())">
+	<style>
+		div {
+			-webkit-user-select: none; /* Safari 3.1+ */
+			-moz-user-select: none; /* Firefox 2+ */
+			-ms-user-select: none; /* IE 10+ */
+			user-select: none; /* Standard syntax */
+			cursor: default;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<div class="table-responsive">
+			<table class="table table-bordered table-sm">
+				<thead class="thead-light">
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Id</th>
+						<th scope="col">Full name</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>
+								@(Model.IndexOf(item) + 1)
+							</td>
+							<td>
+								@(item.UniversityNumber)
+							</td>
+							<td>
+								@(item.FullName)
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

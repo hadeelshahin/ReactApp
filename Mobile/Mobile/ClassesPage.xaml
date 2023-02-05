@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.ClassesPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="0,15" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Label Text="Classes" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid>
+                        <StackLayout IsVisible="{Binding IsClassesNotExist}">
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Image Source="science_back.png" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                <Label Text="No Classes yet!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Large"/>
+                            </Grid>
+                        </StackLayout>
+                        <ListView ItemsSource="{Binding Classes}" IsRefreshing="{Binding IsBusy}" ItemSelected="ClassSelected" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="Transparent" VerticalScrollBarVisibility="Always">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                                            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" CornerRadius="5" Padding="-1">
+                                                <StackLayout HorizontalOptions="FillAndExpand">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="15,10">
+                                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                                            <Label Text="{Binding ClassName}" TextColor="Black" FontSize="Large" />
+                                                            <Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding StartTime, StringFormat='{0:hh:mm tt}'}" TextColor="Black" FontSize="Small"/>
+                                                                        <Span Text=" - " TextColor="Black" FontSize="Small"/>
+                                                                        <Span Text="{Binding EndTime, StringFormat='{0:hh:mm tt}'}" TextColor="Black" FontSize="Small"/>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                            <Label Text="{Binding NumberOfStudents, StringFormat='Number of students: {0}'}" TextColor="Black" FontSize="Small" />
+                                                        </StackLayout>
+                                                        <StackLayout Padding="5">
+                                                            <ImageButton Source="qrcode.png" Aspect="AspectFit" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" Clicked="GenerateQRCode" CommandParameter="{Binding .}"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                    <Button Text="Show Students" HorizontalOptions="FillAndExpand" Padding="0" Margin="0" BackgroundColor="{DynamicResource ButtonShowStudentColor}" HeightRequest="40" CommandParameter="{Binding .}" Clicked="ShowStudentClicked" />
+                                                </StackLayout>
+                                            </Frame>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </StackLayout>
+                <StackLayout VerticalOptions="End" HorizontalOptions="End" Padding="0,0,10,10">
+                    <Button ImageSource="plus.png" CornerRadius="45" WidthRequest="60" HeightRequest="60" VerticalOptions="EndAndExpand" HorizontalOptions="End" Clicked="CreateClassesPage">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

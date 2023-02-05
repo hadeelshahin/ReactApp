@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.CreateClassesPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="40">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Image Source="science_larg.png" Aspect="AspectFit" WidthRequest="150" HeightRequest="150" HorizontalOptions="CenterAndExpand" />
+            <StackLayout VerticalOptions="Start" Spacing="20">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="0,10">
+                    <Image Source="classes.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30"/>
+                    <Entry Text="{Binding ClassName}" Placeholder="Name of class" PlaceholderColor="White" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Class time" FontSize="Medium" TextColor="White"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Frame Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand" BorderColor="Transparent">
+                            <TimePicker  HorizontalOptions="FillAndExpand" TextColor="White" Time="{Binding StartTime}">
+                                <TimePicker.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </TimePicker.Background>
+                            </TimePicker>
+                        </Frame>
+                        <Frame Padding="0" Margin="0" CornerRadius="10" HorizontalOptions="FillAndExpand" BorderColor="Transparent">
+                            <TimePicker  HorizontalOptions="FillAndExpand" TextColor="White"  Time="{Binding EndTime}">
+                                <TimePicker.Background>
+                                    <LinearGradientBrush EndPoint="0,1">
+                                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </TimePicker.Background>
+                            </TimePicker>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            <Button Text="Generate QR" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="GenrateQRCode">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

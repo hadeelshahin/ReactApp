@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.StudentDashboardPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10,20">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Grid HorizontalOptions="FillAndExpand" >
+                <ImageButton Source="profile.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="GoToProfile"/>
+                <Label Text="Quizzes" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            </Grid>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout IsVisible="{Binding IsClassesNotExist}">
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Image Source="science_back.png" Aspect="AspectFit" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                        <Label Text="No Quizzes yet!" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Large"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ListView ItemsSource="{Binding QuizList}" IsRefreshing="{Binding IsBusy}" HasUnevenRows="True" SeparatorVisibility="None" BackgroundColor="Transparent" VerticalScrollBarVisibility="Always">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10">
+                                        <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" CornerRadius="5" Padding="10">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                                <StackLayout HorizontalOptions="StartAndExpand">
+                                                    <Label Text="{Binding Title}" TextColor="Black" FontSize="Medium" />
+                                                    <Label Text="{Binding Subject}" TextColor="Black" FontSize="Subtitle" VerticalOptions="Start" VerticalTextAlignment="Start"/>
+                                                </StackLayout>
+                                                <StackLayout>
+                                                    <Label Text="{Binding CreatedDate, StringFormat='{0:dd-MM-yyyy hh:mm tt}'}" TextColor="Black" FontSize="Small" VerticalOptions="EndAndExpand" VerticalTextAlignment="End"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+            <Button Text="Scan QR Code" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="End" Clicked="GoToScanPage">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                        <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

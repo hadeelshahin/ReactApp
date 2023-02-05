@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Mobile.ScanQRCodePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Padding="20" Spacing="10">
+                    <Label Text="Scan QR Code" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+                    <zxing:ZXingScannerView x:Name="scanView" OnScanResult="Handle_OnScanResult" IsAnalyzing="True" IsScanning="true" HeightRequest="400"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="0,20">
+                        <BoxView Color="White" HeightRequest=".5" WidthRequest="130" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Text="OR" WidthRequest="70" FontAttributes="Bold" FontSize="Medium" TextColor="White"  VerticalOptions="Fill" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                        <BoxView Color="White" HeightRequest=".5" WidthRequest="130" HorizontalOptions="End" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="EntryCode" Placeholder="Enter shortcut code" PlaceholderColor="White" TextColor="White" />
+                    <Button Text="Submit" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center" Clicked="SubmitCode">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="#66000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}">
+                    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                            <Label Text="Loading..."/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

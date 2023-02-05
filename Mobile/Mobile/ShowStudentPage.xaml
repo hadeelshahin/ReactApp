@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="Mobile.ShowStudentPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="10">
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Grid HorizontalOptions="FillAndExpand" >
+                <ImageButton Source="print.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent" HorizontalOptions="Start" Clicked="Print"/>
+                <Label Text="Quizzes" TextTransform="Uppercase" HorizontalOptions="CenterAndExpand" FontSize="Title" TextColor="White" FontAttributes="Bold"/>
+            </Grid>
+            <WebView x:Name="webView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+        </StackLayout>    
+    </ContentPage.Content>
+</ContentPage>

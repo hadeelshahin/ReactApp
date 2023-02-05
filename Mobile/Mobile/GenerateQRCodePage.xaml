@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.GenerateQRCodePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="{DynamicResource StartColor}" Offset="0.1"/>
+                    <GradientStop Color="{DynamicResource EndColor}" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackLayout.Background>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Padding="20">
+                    <Frame BorderColor="#306084" BackgroundColor="#306084" Padding="12" HorizontalOptions="CenterAndExpand" WidthRequest="250" HeightRequest="250" CornerRadius="10">
+                        <Image x:Name="QRCodeImageUrl"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+                    </Frame>
+                    <StackLayout Padding="10,30">
+                        <Label Text="QR Code URL" TextColor="White" FontSize="Medium"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Entry Text="{Binding QRCodeURL}" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                            <ImageButton Source="share.png" BackgroundColor="Transparent" HeightRequest="40" WidthRequest="30" Clicked="ShareLink"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Padding="10">
+                        <Label Text="ID Code" TextColor="White" FontSize="Medium"/>
+                        <Entry Text="{Binding IDCode}" TextColor="White" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <Button Text="Save in Gallery" ImageSource="save.png" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Clicked="SaveInGallery">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="GoToClassesBtn" Text="Go To Classes" FontAttributes="Bold" FontSize="Small" TextColor="White" CornerRadius="30" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="StartAndExpand" Clicked="GoToClasses">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1">
+                                <GradientStop Color="{DynamicResource ButtonStartColor}" Offset="0.1"/>
+                                <GradientStop Color="{DynamicResource ButtonEndColor}" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </StackLayout>
+                <StackLayout BackgroundColor="#66000000" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsBusy}">
+                    <Frame HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <StackLayout>
+                            <ActivityIndicator IsRunning="{Binding IsBusy}" />
+                            <Label Text="Loading..."/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
